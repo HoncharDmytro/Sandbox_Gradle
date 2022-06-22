@@ -1,0 +1,12 @@
+dependencies {
+
+}
+
+//jar {
+//    manifest {
+//        attributes("Created-By"      : "Dmytro Honchar",
+//                "Specification-Title": "Sandbox Gradle",
+//                "Main-Class"         : "com.sandbox_gradle.test01.Main",
+//                "Class-Path"         : configurations.implementation.collect { it.getName() }.join(' '))
+//    }
+//}

@@ -1,0 +1,4 @@
+rootProject.name = 'Sandbox_Gradle'
+include 'Sandbox_Gradle_01'
+include 'Sandbox_Gradle_02'
+

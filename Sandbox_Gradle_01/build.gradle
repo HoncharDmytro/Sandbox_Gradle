@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+//    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+}
+
+subprojects {
+    group 'org.sandbox_gradle.01'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation testing.jupiterApi
+        testRuntimeOnly testing.jupiterEngine
+
+        implementation (
+                spring.core, spring.beans, spring.context, spring.aop, spring.jdbc, spring.dataJpa
+        )
+
+        implementation (
+                hibernate.em, hibernate.core, hibernate.jpaApi
+        )
+
+//        implementation (
+//                boot.springBootPlugin, boot.starterJpa, boot.starterAop, boot.starterJdbc, boot.autoconfigure
+//        )
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+
+
