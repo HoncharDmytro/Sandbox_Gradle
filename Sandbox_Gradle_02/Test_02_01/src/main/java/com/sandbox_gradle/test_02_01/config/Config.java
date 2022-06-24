@@ -21,7 +21,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"com.sandbox_gradle.test_02_01.dao",
         "com.sandbox_gradle.test_02_01.config"})
 @EnableTransactionManagement
-@PropertySource("classpath:properties/application.properties")
+@PropertySource("classpath:properties/app.properties")
 public class Config {
 
     private static final Logger logger = LoggerFactory.getLogger(Config.class);

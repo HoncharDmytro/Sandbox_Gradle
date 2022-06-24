@@ -1,19 +1,27 @@
 plugins {
     id 'java'
-//    id 'org.springframework.boot' version '2.7.0'
+//    id 'org.springframework.boot' version '2.1.18.RELEASE'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 ext {
     //spring libs
     springVersion = '5.2.22.RELEASE'
-    bootVersion = '2.1.18.RELEASE'
+    bootVersion = '2.3.9.RELEASE'
     springDataVersion = '2.3.9.RELEASE'
     springAmqpVersion = '2.2.22.RELEASE'
     springSecurityVersion = '5.3.13.RELEASE'
     springBatchVersion = '4.2.8.RELEASE'
     springIntegrationVersion = '5.3.10.RELEASE'
     projectReactorVersion = '3.3.22.RELEASE'
+
+//    springVersion = '5.3.20'
+//    bootVersion = '2.7.0'
+//    springDataVersion = '2.7.0'
+//    springAmqpVersion = '2.4.4'
+//    springSecurityVersion = '5.7.0'
+//    springBatchVersion = '4.3.5'
+//    springIntegrationVersion = '5.5.10'
 
     //logging libs
     slf4jVersion = '1.7.36'
@@ -37,7 +45,7 @@ ext {
 
     //testing libs
     mockitoVersion = '4.6.0'
-    jupiterVersion = '5.8.2'
+    jupiterVersion = '5.6.2'
 
     spring = [
             core              : "org.springframework:spring-core:${springVersion}",
@@ -141,6 +149,8 @@ allprojects {
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
+//    sourceCompatibility = 17
+//    targetCompatibility = 17
 }
 
 subprojects {

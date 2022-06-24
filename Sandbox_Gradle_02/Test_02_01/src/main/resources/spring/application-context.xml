@@ -14,7 +14,7 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:properties/application.properties"/>
+    <context:property-placeholder location="classpath:properties/app.properties"/>
 
     <tx:annotation-driven/>
 
@@ -30,9 +30,9 @@
 
     <util:properties id="hibernateProperties">
         <prop key="hibernate.dialect">${dialect}</prop>
-        <prop key="hibernate.format_sql">true</prop>
-        <prop key="hibernate.use_sql_comments">true</prop>
-        <prop key="hibernate.show_sql">true</prop>
+<!--        <prop key="hibernate.format_sql">true</prop>-->
+<!--        <prop key="hibernate.use_sql_comments">true</prop>-->
+<!--        <prop key="hibernate.show_sql">true</prop>-->
         <prop key="hibernate.max_fetch_depth">3</prop>
         <prop key="hibernate.jdbc.batch_size">10</prop>
         <prop key="hibernate.jdbc.fetch_size">50</prop>

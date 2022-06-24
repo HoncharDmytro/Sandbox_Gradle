@@ -1,7 +1,5 @@
 package com.sandbox_gradle.test_02_01.entities;
 
-import org.springframework.context.annotation.Lazy;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
