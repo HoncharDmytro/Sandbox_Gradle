@@ -4,16 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
-group = 'org.sandbox_gradle'
-version = '1.0-SNAPSHOT'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-ext{
+ext {
     //spring libs
     springVersion = '5.2.22.RELEASE'
     bootVersion = '2.1.18.RELEASE'
@@ -107,17 +98,12 @@ ext{
 
     ]
 
-    testing = [
-            jupiterApi    : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
-            jupiterEngine : "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
-            mockitoCore   : "org.mockito:mockito-core:${mockitoVersion}",
-            mockitoJupiter: "org.mockito:mockito-junit-jupiter:${mockitoVersion}",
-    ]
-
-    logging = [
+    logg = [
             slf4jApi       : "org.slf4j:slf4j-api:${slf4jVersion}",
+            slf4jSimple    : "org.slf4j:slf4j-simple:${slf4jVersion}",
             slf4jJcl       : "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
-            logback        : "ch.qos.logback:logback-classic:${logbackVersion}"
+            logbackClassic  : "ch.qos.logback:logback-classic:${logbackVersion}",
+            logbackCore    : "ch.qos.logback:logback-core:${logbackVersion}"
     ]
 
     mixed = [
@@ -136,15 +122,31 @@ ext{
             dbcp2   : "org.apache.commons:commons-dbcp2:${dbcp2Version}",
     ]
 
+    tests = [
+            jupiterApi    : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
+            jupiterEngine : "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
+            mockitoCore   : "org.mockito:mockito-core:${mockitoVersion}",
+            mockitoJupiter: "org.mockito:mockito-junit-jupiter:${mockitoVersion}",
+    ]
+
 //    web = [
 //
 //    ]
 }
 
-dependencies {
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 }
 
-test {
-    useJUnitPlatform()
+subprojects {
+    version = '1.0-SNAPSHOT'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }

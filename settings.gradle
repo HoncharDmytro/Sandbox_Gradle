@@ -1,4 +1,13 @@
 rootProject.name = 'Sandbox_Gradle'
-include 'Sandbox_Gradle_01'
-include 'Sandbox_Gradle_02'
 
+include 'Sandbox_Gradle_01:Test_01_01'
+include 'Sandbox_Gradle_01:Test_01_02'
+include 'Sandbox_Gradle_02:Test_02_01'
+include 'Sandbox_Gradle_02:Test_02_02'
+
+rootProject.children.each { project ->
+    project.buildFileName = "${project.name}.gradle"
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.exists()
+    assert project.buildFile.isFile()
+}

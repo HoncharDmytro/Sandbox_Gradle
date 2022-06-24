@@ -1,27 +1,27 @@
-plugins {
-    id 'java'
-//    id 'org.springframework.boot' version '2.7.0'
-    id 'io.spring.dependency-management'
-}
-
 subprojects {
-    group 'org.sandbox_gradle.01'
-    version '1.0-SNAPSHOT'
+    group 'org.sandbox_gradle.sandbox_gradle_02'
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+//    apply plugin: 'org.springframework.boot'
 
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        testImplementation testing.jupiterApi
-        testRuntimeOnly testing.jupiterEngine
+        testImplementation tests.jupiterApi
+        testRuntimeOnly tests.jupiterEngine
+
+        implementation (
+                logg.slf4jApi, logg.logbackClassic, logg.logbackCore
+        )
 
         implementation (
                 spring.core, spring.beans, spring.context, spring.aop, spring.jdbc, spring.dataJpa
         )
 
         implementation (
-                hibernate.em, hibernate.core, hibernate.jpaApi
+                hibernate.em, hibernate.core, hibernate.jpaApi, db.dbcp2, db.mysql
         )
 
 //        implementation (
@@ -33,6 +33,3 @@ subprojects {
         useJUnitPlatform()
     }
 }
-
-
-
