@@ -23,7 +23,6 @@ public class Album implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "release_date")
-
     private Date releaseDate;
 
     @ManyToOne

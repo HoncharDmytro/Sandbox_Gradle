@@ -47,8 +47,7 @@ public class Singer implements Serializable {
     @Column(name = "birth_date")
     private Date birthDate;
 
-    @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Album> albums = new HashSet<>();
 
     @ManyToMany

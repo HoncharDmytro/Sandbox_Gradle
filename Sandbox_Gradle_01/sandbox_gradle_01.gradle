@@ -13,11 +13,11 @@ subprojects {
         testRuntimeOnly tests.jupiterEngine
 
         implementation (
-                spring.core, spring.beans, spring.context, spring.aop, spring.jdbc, spring.dataJpa
+                logg.slf4jApi, logg.logbackClassic, logg.logbackCore
         )
 
         implementation (
-                hibernate.em, hibernate.core, hibernate.jpaApi, db.dbcp2, db.mysql
+                spring.core, spring.beans, spring.context, spring.aop
         )
 
 //        implementation (
