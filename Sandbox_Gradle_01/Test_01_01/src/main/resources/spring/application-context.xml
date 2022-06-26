@@ -11,20 +11,18 @@
 
     <!--Tell Spring check code on @Component, @Controller, @Repository, @Service, @Autowired
                                                                       and @Inject in this package -->
-<!--    <context:component-scan base-package="com.sandbox_gradle.test_01_01"/>-->
+        <context:component-scan base-package="com.sandbox_gradle.test_01_01"/>
 
-<!--    &lt;!&ndash; <context:component-scan base-package="com.sandbox_gradle.test_01_01">-->
-<!--           <context:exclude-filter type="assignable" expression="com.example.NotAService"/>-->
-<!--         </context:component-scan>                                                                &ndash;&gt;-->
+<!--    <context:component-scan base-package="com.sandbox_gradle.test_01_01">
+            <context:exclude-filter type="assignable" expression="com.example.NotAService"/>
+        </context:component-scan>                                                                 -->
 
-<!--        <bean id="simpleClass" class="com.sandbox_gradle.test_01_01.SimpleClass"-->
-<!--              c:aboba="ganging up!"-->
-<!--              c:text="that's good!"-->
-<!--              p:value="YEP, THAT'S IT!!!!"-->
-<!--        />-->
+        <bean id="simpleClass" class="com.sandbox_gradle.test_01_01.SimpleClass"
+              c:aboba="ganging up!"/>  <!--constructor-->
+    <!--      p:value="YEP, THAT'S IT!!!!"   setter   -->
 
     <!--    <bean id="simpleClass" class="com.sandbox_gradle.test_01_01.SimpleClass">
-            <constructor-arg name="accountRepository" ref="accountRepository" />
+            <constructor-arg name="argumentName(to insert)" ref="beanName(class or value for insert)" />
             </bean>                                                                               -->
 
 </beans>

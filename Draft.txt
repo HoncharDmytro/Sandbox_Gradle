@@ -1,4 +1,27 @@
-@ImportResource(locations = {"classpath:spring/app-context-xml.xml"})
 
-@Autowired //==// @Inject //OR// @Resource(name="messageProvider")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

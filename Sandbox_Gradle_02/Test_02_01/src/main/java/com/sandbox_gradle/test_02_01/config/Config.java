@@ -42,7 +42,7 @@ public class Config {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
-    @Bean(destroyMethod = "close")
+    @Bean
     public BasicDataSource dataSource() {
         try {
             BasicDataSource dataSource = new BasicDataSource();
@@ -60,7 +60,7 @@ public class Config {
     private Properties hibernateProperties() {
         Properties hibernateProp = new Properties();
         hibernateProp.put("hibernate.dialect", dialect);
-        hibernateProp.put("hibernate.hbm2ddl.auto", "create-drop");
+        hibernateProp.put("hibernate.hbm2ddl.auto", "create");
 //        hibernateProp.put("hibernate.format_sql", true);
 //        hibernateProp.put("hibernate.use_sql_comments", true);
 //        hibernateProp.put("hibernate.show_sql", true);

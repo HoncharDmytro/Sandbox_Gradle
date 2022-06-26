@@ -1,0 +1,67 @@
+@Configuration
+@ComponentScan
+@ComponentScan(basePackages = {"com.package1","com.package2","com.package3"})
+@ComponentScan(basePackageClasses = {Class1.class, Class2.class})
+@ComponentScans({
+        @ComponentScan(basePackages = {"com.package1","com.package2","com.package3"}),
+        @ComponentScan(basePackageClasses = {Class1.class, Class2.class})
+})
+@PropertySource("classpath:properties/app.properties")
+@ImportResource(locations = {"classpath:spring/app-context-xml.xml"})
+@ContextConfiguration(classes = { BirdConfig.class, CatConfig.class, DogConfig.class })
+@Import({ DogConfig.class, CatConfig.class })
+
+@Bean("beanName")
+
+@Component("componentName") // @Repository // @Service // @Controller
+
+@Autowired //==// @Inject //OR// @Resource(name="messageProvider")
+
+Порядок вызовов элементов:
+    0. Создание различных обработчиков и фабрик для конфигурации
+    1. Создание общего экземпляра singleton bean "Конфигурационный класс №1"
+    2. Создание общего экземпляра singleton bean "Конфигурационный класс №2"
+    3. Создание общего экземпляра singleton bean "Конфигурационный класс №3"
+
+    4. Создание общего экземпляра singleton bean "Класс-Компонет(@Componente) №1"
+
+            5. Создание общего экземпляра singleton bean "@Bean метод №1 в Класс-@Componente №1"
+            6. Создание общего экземпляра singleton bean "@Bean метод №2 в Класс-@Componente №1"
+
+            7. Автоматическое связывание(@Autowired) по типу из бина «Класс-@Componente №1»
+                    через конструктор с бином "@Bean метод №1"
+            8. Автоматическое связывание второго элемента конструтора
+            9. Непосредственно инициализация самого конструктора класса.
+
+            10. Создание общего экземпляра singleton bean "@Bean метод №3 в Класс-@Componente №1"
+            11. Автоматическое связывание через сеттер @Bean метода №3 из Класс-@Componente №1
+
+    12. Создание общего экземпляра singleton bean "Класс-Компонет(@Componente) №2"
+
+            13. Создание общего экземпляра singleton bean "@Bean метод №3 в Класс-@Componente №2"
+            14. Автоматическое связывание через сеттер @Bean метода №3 из Класс-@Componente №2
+
+            15. Создание общего экземпляра singleton bean "@Bean метод №1 в Класс-@Componente №2"
+            16. Автоматическое связывание через сеттер @Bean метода №1 из Класс-@Componente №2
+
+            17. Создание общего экземпляра singleton bean "@Bean метод №2 в Класс-@Componente №2"
+            18. Автоматическое связывание через сеттер @Bean метода №2 из Класс-@Componente №2
+
+    19. Создание общего экземпляра singleton bean "@Bean метод №4 в Класс-@Componente №3" - остальное
+                    пропустили, ибо @Lazy!!!!!!!!!!!!!!!!!!!
+
+    20. Инициализация new AnnotationConfigApplicationContext(Config.class) завершена
+
+    21. Получаем экземпляр класса напрямую или через интерфейс:
+                    SimpleClass simple = ctx.getBean("simpleClass", SimpleClass.class);
+                                                  ИЛИ
+                         SimpleClass simple = ctx.getBean(SimpleInterface.class);
+
+    22. Работаем непосредственно с полученым классом(геттеры, сеттеры, различные методы и т.д.)
+
+ИТОГО:
+    0. Все начинается с создания контекста
+    1. Всегда первыми инициализируются конфиги(инициализируются бины)
+    2. Поочередно инициализируются все @Component и производные, если нужно создаются новые бины, заполяются
+            сеттеры и конструкторы.
+    3.Через созданный контекст можем тянуть нужные нам интерфейсы, классы и бины
