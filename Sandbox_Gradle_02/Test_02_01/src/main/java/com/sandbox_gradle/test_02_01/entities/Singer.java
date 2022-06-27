@@ -24,7 +24,6 @@ import java.util.Set;
                         "left join fetch s.instruments i")
 })
 public class Singer implements Serializable {
-
     public static final String FIND_SINGER_BY_ID = "Singer.findById";
     public static final String FIND_ALL_WITH_ALBUM = "Singer.findAllWithAlbum";
 

@@ -8,7 +8,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "album")
 public class Album implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(updatable = false)
@@ -85,7 +84,11 @@ public class Album implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Album album = (Album) o;
-        return version == album.version && Objects.equals(id, album.id) && Objects.equals(title, album.title) && Objects.equals(releaseDate, album.releaseDate) && Objects.equals(singer, album.singer);
+        return version == album.version
+                && Objects.equals(id, album.id)
+                && Objects.equals(title, album.title)
+                && Objects.equals(releaseDate, album.releaseDate)
+                && Objects.equals(singer, album.singer);
     }
 
     @Override

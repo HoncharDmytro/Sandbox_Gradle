@@ -18,12 +18,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = {"com.sandbox_gradle.test_02_01.dao",
-        "com.sandbox_gradle.test_02_01.config"})
-@EnableTransactionManagement
 @PropertySource("classpath:properties/app.properties")
+@ComponentScan(basePackages = {"com.sandbox_gradle.test_02_01.dao", "com.sandbox_gradle.test_02_01.config"})
+@EnableTransactionManagement
 public class Config {
-
     private static final Logger logger = LoggerFactory.getLogger(Config.class);
 
     @Value("${driverClassName}")
@@ -70,7 +68,7 @@ public class Config {
         return hibernateProp;
     }
 
-    @Bean
+    @Bean(initMethod = "initDB", destroyMethod = "clearDB")
     public SessionFactory sessionFactory() {
         return new LocalSessionFactoryBuilder(dataSource())
                 .scanPackages("com.sandbox_gradle.test_02_01.entities")
@@ -78,7 +76,7 @@ public class Config {
                 .buildSessionFactory();
     }
 
-    @Bean
+    @Bean()
     public PlatformTransactionManager transactionManager() {
         return new HibernateTransactionManager(sessionFactory());
     }

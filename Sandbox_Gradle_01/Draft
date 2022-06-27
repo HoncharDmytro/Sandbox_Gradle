@@ -1,0 +1,68 @@
+@DependsOn("beanOne", "beanTwo") - Use this annotation for specifying bean dependencies.
+
+@Scope
+
+import org.springframework.beans.factory.support.MethodReplacer;
+
+@Override
+public Object reimplement(Object class, Method method, Object[] args) throws Throwable {
+	//some logic
+}
+
+Замена метода в чужом классе: Object class - класс, Method method - метод, Object[] args - аргументи конструктора.
+
+@Bean(initMethod = "initDB") // @PostConstruct // InitializingBean.afterPropertiesSet()
+@Bean(destroyMethod="destroyDB") //@PreDestroy // DisposableBean.destroy()
+
+@Autowired	    @Autowired
+Environment env; // PropertySource prop;
+
+@Value - можно помечать параметри конструктора для получения их из внешнего файла.
+
+@Profile("production")
+@Configuration
+public class Config {}
+
+@ActiveProfiles("production") // - работает только с тестами, указ профиль
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes={Config.class,Config2.class)
+public class Test {...}
+
+mvn spring-boot:run -Dspring.profiles.active=production // spring.profiles.default=production
+
+<profiles>
+    <!--Your default profile... selected if none specified-->
+    <profile>
+        <id>production</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <activeProfile>production</activeProfile>
+        </properties>
+    </profile>
+
+    <!--Profile 2-->
+    <profile>
+        <id>development</id>
+        <properties>
+            <activeProfile>development</activeProfile>
+        </properties>
+    </profile>
+
+    <!--Profile 3-->
+    <profile>
+        <id>otherprofile</id>
+        <properties>
+            <activeProfile>otherprofile</activeProfile>
+        </properties>
+    </profile>
+<profiles>
+
+bootRun {
+    bootRun.systemProperty 'spring.profiles.active', "${springProfile}"
+}
+
+
+
+

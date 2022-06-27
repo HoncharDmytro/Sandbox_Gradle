@@ -6,8 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PreDestroy;
-
 @Service
 public class Destruction {
     private final Logger logger = LoggerFactory.getLogger(Destruction.class);
@@ -19,7 +17,7 @@ public class Destruction {
         this.sessionFactory = sessionFactory;
     }
 
-    @PreDestroy
+    //@PreDestroy
     public final void clearDB() {
         logger.info(" ... Deleting database files.");
 
