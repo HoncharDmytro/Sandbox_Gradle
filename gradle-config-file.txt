@@ -1,6 +1,6 @@
 gradle wrapper --gradle-version 7.4
-./gradlew build -x test
+.\gradlew build -x test
 
-./gradlew wrapper --gradle-version 7.4
+.\gradlew wrapper --gradle-version 7.4
 
-./gradlew wrapper --gradle-version 7.4 --distribution-type all //OR// bin
+.\gradlew wrapper --gradle-version 7.4 --distribution-type all //OR// bin
