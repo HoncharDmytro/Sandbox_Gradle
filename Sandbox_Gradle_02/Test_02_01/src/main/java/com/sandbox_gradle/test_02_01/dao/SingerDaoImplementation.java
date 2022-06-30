@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
@@ -27,16 +26,19 @@ public class SingerDaoImplementation implements SingerDao {
 
     @Transactional(readOnly = true)
     public List<Singer> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("select s from Singer s").list();
+        return sessionFactory
+                .getCurrentSession()
+                .createQuery("select s from Singer s", Singer.class)
+                .getResultList();
     }
 
     public void save(Singer singer) {
-        sessionFactory.getCurrentSession().saveOrUpdate(singer);
+        sessionFactory.getCurrentSession().persist(singer);
         logger.info("Singer saved with id: " + singer.getId());
     }
 
     public void delete(Singer singer) {
-        sessionFactory.getCurrentSession().delete(singer);
+        sessionFactory.getCurrentSession().remove(singer);
         logger.info("Singer deleted with id: " + singer.getId());
     }
 
@@ -44,14 +46,18 @@ public class SingerDaoImplementation implements SingerDao {
 
     @Transactional(readOnly = true)
     public List<Singer> findAllWithAlbum() {
-        return sessionFactory.getCurrentSession().
-                getNamedQuery("Singer.findAllWithAlbum").list();
+        return sessionFactory
+                .getCurrentSession()
+                .createNamedQuery("Singer.findAllWithAlbum", Singer.class)
+                .getResultList();
     }
 
     @Transactional(readOnly = true)
     public Singer findById(Long id) {
-        return (Singer) sessionFactory.getCurrentSession().
-                getNamedQuery("Singer.findById").
-                setParameter("id", id).uniqueResult();
+        return (Singer) sessionFactory
+                .getCurrentSession()
+                .createNamedQuery("Singer.findById", Singer.class)
+                .setParameter("id", id)
+                .uniqueResult();
     }
 }

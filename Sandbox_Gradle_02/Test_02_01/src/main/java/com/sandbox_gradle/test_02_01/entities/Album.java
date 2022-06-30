@@ -1,6 +1,6 @@
 package com.sandbox_gradle.test_02_01.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;

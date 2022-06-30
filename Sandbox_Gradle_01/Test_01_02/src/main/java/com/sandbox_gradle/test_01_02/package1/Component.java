@@ -1,7 +1,6 @@
 package com.sandbox_gradle.test_01_02.package1;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service//("component1") - "component1" - it's ID of this bean, u can skip it, just @Service, id will be same

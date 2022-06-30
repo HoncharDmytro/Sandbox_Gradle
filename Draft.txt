@@ -1,4 +1,23 @@
-
+//spring javax libs
+//
+//        springVersion = '5.2.22.RELEASE'
+//        bootVersion = '2.3.9.RELEASE'
+//        springDataVersion = '2.3.9.RELEASE'
+//        springAmqpVersion = '2.2.22.RELEASE'
+//        springSecurityVersion = '5.3.13.RELEASE'
+//        springBatchVersion = '4.2.8.RELEASE'
+//        springIntegrationVersion = '5.3.10.RELEASE'
+//        projectReactorVersion = '3.3.22.RELEASE'
+//
+//        artemisVersion = '2.4.0' //javax
+//
+//        hibernateVersion = '5.6.9.Final' //javax
+//        hibernateValidatorVersion = '6.0.23.Final' //javax
+//
+//        jupiterVersion = '5.6.2' //for javax versions(old)
+//
+//        slf4jVersion = '1.7.36'
+//        logbackVersion = '1.2.11'
 
 
 

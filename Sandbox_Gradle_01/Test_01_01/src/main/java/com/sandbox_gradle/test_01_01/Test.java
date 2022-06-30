@@ -11,7 +11,7 @@ public class Test {
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
         SimpleClass simple = ctx.getBean("simpleClass", SimpleClass.class);
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
-        System.out.println("Test, SimpleClass bean geted!!!");
+        System.out.println("Test, SimpleClass bean gotten!!!");
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
         System.out.println(simple.getValue());
 

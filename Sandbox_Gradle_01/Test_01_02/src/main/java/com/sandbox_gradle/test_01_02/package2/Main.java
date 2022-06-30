@@ -1,6 +1,5 @@
 package com.sandbox_gradle.test_01_02.package2;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 

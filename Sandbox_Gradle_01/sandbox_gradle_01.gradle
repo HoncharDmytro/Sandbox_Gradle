@@ -1,40 +1,7 @@
-//plugins {
-//    id 'java'
-////    id 'org.springframework.boot'
-//    id 'io.spring.dependency-management'
-//}
-
 subprojects {
-    group 'org.sandbox_gradle.sandbox_gradle_01'
-    apply plugin: 'java'
-    apply plugin: 'io.spring.dependency-management'
-//    apply plugin: 'org.springframework.boot'
-
-    repositories {
-        mavenCentral()
-    }
-
     dependencies {
-        testImplementation tests.jupiterApi
-        testRuntimeOnly tests.jupiterEngine
-
-        implementation (
-                logg.slf4jApi, logg.logbackClassic, logg.logbackCore
-        )
-
         implementation (
                 spring.core, spring.beans, spring.context, spring.aop
         )
-
-//        implementation (
-//                boot.springBootPlugin, boot.starterJpa, boot.starterAop, boot.starterJdbc, boot.autoconfigure
-//        )
-    }
-
-    test {
-        useJUnitPlatform()
     }
 }
-
-
-

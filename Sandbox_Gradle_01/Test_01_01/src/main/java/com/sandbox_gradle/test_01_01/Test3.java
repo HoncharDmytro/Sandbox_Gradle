@@ -11,7 +11,7 @@ public class Test3 {
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
         LazyClass simple = ctx.getBean(LazyClass.class);
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
-        System.out.println("Test3, LazyClass bean geted!!!");
+        System.out.println("Test3, LazyClass bean gotten!!!");
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
         System.out.println(simple.getMiny());
         System.out.println(simple.getBurn());

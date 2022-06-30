@@ -25,7 +25,7 @@ public class Destruction {
                 "TRUNCATE hibernate.album;" +
                 "TRUNCATE hibernate.instrument;" +
                 "TRUNCATE hibernate.singer_instrument;";
-        sessionFactory.getCurrentSession().createSQLQuery(sqlQuery);
+        sessionFactory.getCurrentSession().createQuery(sqlQuery, null);
 
         logger.info(" ... Database has bean cleared.");
     }

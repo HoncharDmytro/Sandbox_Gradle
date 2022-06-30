@@ -1,44 +1,15 @@
-//plugins {
-//    id 'java'
-//    id 'io.spring.dependency-management'
-//    id 'org.springframework.boot' version '2.3.9.RELEASE'
-//}
-plugins {
-    id 'org.springframework.boot' version '2.3.9.RELEASE'
-}
-
 subprojects {
-    group 'org.sandbox_gradle.sandbox_gradle_02'
-    apply plugin: 'java'
-    apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'org.springframework.boot'
-
-    repositories {
-        mavenCentral()
-    }
-
     dependencies {
-        testImplementation tests.jupiterApi
-        testRuntimeOnly tests.jupiterEngine
-
-        implementation (
-                logg.slf4jApi, logg.logbackClassic, logg.logbackCore
-        )
-
         implementation (
                 spring.core, spring.beans, spring.context, spring.dataJpa
         )
 
         implementation (
-                hibernate.em, hibernate.core, hibernate.jpaApi, db.dbcp2, db.mysql
+                hibernate.core, db.tomcatDbcp, db.mysql
         )
 
         implementation (
-                boot.springBootPlugin, boot.starterWeb, boot.starterJpa
+                boot.starterJpa
         )
-    }
-
-    test {
-        useJUnitPlatform()
     }
 }

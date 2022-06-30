@@ -23,7 +23,7 @@ public class InstrumentDaoImplementation implements InstrumentDao {
 
     @Override
     public void save(Instrument instrument) {
-        sessionFactory.getCurrentSession().saveOrUpdate(instrument);
+        sessionFactory.getCurrentSession().persist(instrument);
         logger.info("Instrument saved with id: " + instrument.getInstrumentId());
     }
 }

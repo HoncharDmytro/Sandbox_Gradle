@@ -11,7 +11,7 @@ public class Test2 {
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
         SimpleInterface simple = ctx.getBean(SimpleInterface.class);
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
-        System.out.println("Test2, SimpleInterface bean geted!!!");
+        System.out.println("Test2, SimpleInterface bean gotten!!!");
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
         System.out.println(simple.getTextOne());
         System.out.println(simple.getTextTwo());

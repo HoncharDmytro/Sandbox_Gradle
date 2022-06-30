@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration debug="false">
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>
     </contextListener>
@@ -10,14 +10,18 @@
         </encoder>
     </appender>
 
-<!--    <appender name="STDOUT2" class="ch.qos.logback.classic.joran.action.ConfigurationAction">-->
+<!--    <appender name="FILE" class="ch.qos.logback.core.FileAppender">-->
+<!--        <file>c:/dev/logs_test/logback.log</file>-->
+<!--        <append>true</append>-->
+<!--        <immediateFlush>true</immediateFlush>-->
 <!--        <encoder>-->
-<!--            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+<!--            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -> %msg%n</pattern>-->
 <!--        </encoder>-->
 <!--    </appender>-->
 
-    <logger name="com.sandbox_gradle" level="debug" additivity="false">
+    <logger name="com.sandbox_gradle" level="info" additivity="false">
         <appender-ref ref="STDOUT"/>
+<!--        <appender-ref ref="FILE"/>-->
     </logger>
 <!--    <appender name="file" class="ch.qos.logback.core.FileAppender">-->
 <!--        <file>logback.log</file>-->
@@ -28,8 +32,8 @@
 <!--        </encoder>-->
 <!--    </appender>-->
 
-    <root level="debug">
+    <root level="info" additivity="false">
         <appender-ref ref="STDOUT"/>
-<!--        <appender-ref ref="file" />-->
+<!--        <appender-ref ref="FILE" />-->
     </root>
 </configuration>

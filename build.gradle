@@ -1,162 +1,174 @@
+//buildscript{} - configuration section is for gradle itself
+buildscript{
+    ext {
+        //spring jakarta libs
+        springVersion = '5.3.20'
+        bootVersion = '2.7.0'
+        springDataVersion = '2.7.0'
+        springAmqpVersion = '2.4.5'
+        springSecurityVersion = '5.7.1'
+        springBatchVersion = '4.3.5'
+        springIntegrationVersion = '5.5.12'
+        projectReactorVersion = '3.4.18'
+
+        //persistence libs
+        hibernateVersion = '6.1.0.Final'
+        hibernateValidatorVersion = '7.0.4.Final'
+        hibernateEhcacheVersion = '6.0.0.Alpha7'
+        mysqlVersion = '8.0.29'
+        postgresVersion = '42.4.0'
+        atomikosVersion = '5.0.9'
+
+        //logging libs
+        slf4jVersion =  '2.0.0-alpha7'
+        logbackVersion = '1.3.0-alpha16'
+
+        //testing libs
+        mockitoVersion = '4.6.0'
+        jupiterVersion = '5.8.2'
+
+        //mixed libs
+        jettyServerCoreVersion = '11.0.10'
+        aspectjVersion = '1.9.9'
+        dbcp2Version = '2.9.0'
+        tomcatVersion = '10.1.0-M16'
+        hikariVersion = '2.14.0'
+        artemisVersion = '2.23.0'
+        guavaVersion = '23.0'
+        lang3Version = '3.12.0'
+        lombokVersion = '1.18.24'
+
+        spring = [
+                core              : "org.springframework:spring-core:${springVersion}",
+                beans             : "org.springframework:spring-beans:${springVersion}",
+                context           : "org.springframework:spring-context:${springVersion}",
+                webmvc            : "org.springframework:spring-webmvc:${springVersion}",
+                aop               : "org.springframework:spring-aop:${springVersion}",
+                aspects           : "org.springframework:spring-aspects:${springVersion}",
+                tx                : "org.springframework:spring-tx:${springVersion}",
+                jdbc              : "org.springframework:spring-jdbc:${springVersion}",
+                contextSupport    : "org.springframework:spring-context-support:${springVersion}",
+                orm               : "org.springframework:spring-orm:${springVersion}",
+                dataJpa           : "org.springframework.data:spring-data-jpa:${springDataVersion}",
+                test              : "org.springframework:spring-test:${springVersion}",
+                jms               : "org.springframework:spring-jms:${springVersion}",
+                oxm               : "org.springframework:spring-oxm:${springVersion}",
+                securityWeb       : "org.springframework.security:spring-security-web:${springSecurityVersion}",
+                securityConfig    : "org.springframework.security:spring-security-config:${springSecurityVersion}",
+                securityTaglibs   : "org.springframework.security:spring-security-taglibs:${springSecurityVersion}",
+                rabbit            : "org.springframework.amqp:spring-rabbit:${springAmqpVersion}",
+                springSecurityTest: "org.springframework.security:spring-security-test:${springSecurityVersion}",
+                webSocket         : "org.springframework:spring-websocket:${springVersion}",
+                messaging         : "org.springframework:spring-messaging:${springVersion}",
+                batchCore         : "org.springframework.batch:spring-batch-core:${springBatchVersion}",
+                batchIntegration  : "org.springframework.batch:spring-batch-integration:${springBatchVersion}",
+                integrationFile   : "org.springframework.integration:spring-integration-file:${springIntegrationVersion}",
+                webflux           : "org.springframework:spring-webflux:${springVersion}",
+                projectReactor    : "io.projectreactor:reactor-core:${projectReactorVersion}"
+        ]
+
+        boot = [
+                starterWeb      : "org.springframework.boot:spring-boot-starter-web:${bootVersion}",
+                starterTest     : "org.springframework.boot:spring-boot-starter-test:${bootVersion}",
+                starterAop      : "org.springframework.boot:spring-boot-starter-aop:${bootVersion}",
+                starterJdbc     : "org.springframework.boot:spring-boot-starter-jdbc:${bootVersion}",
+                starterJpa      : "org.springframework.boot:spring-boot-starter-data-jpa:${bootVersion}",
+                starterJta      : "org.springframework.boot:spring-boot-starter-jta-atomikos:${bootVersion}",
+                starterArtemis  : "org.springframework.boot:spring-boot-starter-artemis:${bootVersion}",
+                starterRabbitmq : "org.springframework.boot:spring-boot-starter-amqp:${bootVersion}",
+                starterThyme    : "org.springframework.boot:spring-boot-starter-thymeleaf:${bootVersion}",
+                starterSecurity : "org.springframework.boot:spring-boot-starter-security:${bootVersion}",
+                starterBatch    : "org.springframework.boot:spring-boot-starter-batch:${bootVersion}",
+                starterWebflux  : "org.springframework.boot:spring-boot-starter-webflux:${bootVersion}",
+                autoconfigure   : "org.springframework.boot:spring-boot-autoconfigure:${bootVersion}"
+
+        ]
+
+        hibernate = [
+                core       : "org.hibernate.orm:hibernate-core:${hibernateVersion}",
+                validator  : "org.hibernate:hibernate-validator:${hibernateValidatorVersion}",
+                jpaModelGen: "org.hibernate.orm:hibernate-jpamodelgen:${hibernateVersion}",
+                ehcache    : "org.hibernate.orm:hibernate-ehcache:${hibernateEhcacheVersion}",
+                envers     : "org.hibernate.orm:hibernate-envers:${hibernateVersion}",
+                atomikos   : "com.atomikos:transactions:${atomikosVersion}"
+        ]
+
+        db = [
+                mysql     : "mysql:mysql-connector-java:${mysqlVersion}",
+                postgres  : "org.postgresql:postgresql:${postgresVersion}",
+                dbcp2     : "org.apache.commons:commons-dbcp2:${dbcp2Version}",
+                tomcatDbcp: "org.apache.tomcat:tomcat-dbcp:${tomcatVersion}",
+                tomcatJdbc: "org.apache.tomcat:tomcat-jdbc:${tomcatVersion}",
+                hikari    : "hikari-cp:hikari-cp:${hikariVersion}"
+        ]
+
+        logg = [
+                slf4jApi       : "org.slf4j:slf4j-api:${slf4jVersion}",
+                slf4jSimple    : "org.slf4j:slf4j-simple:${slf4jVersion}",
+                slf4jJcl       : "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
+                logbackClassic  : "ch.qos.logback:logback-classic:${logbackVersion}",
+                logbackCore    : "ch.qos.logback:logback-core:${logbackVersion}"
+        ]
+
+        tests = [
+                jupiterApi    : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
+                jupiterEngine : "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
+                mockitoCore   : "org.mockito:mockito-core:${mockitoVersion}",
+                mockitoJupiter: "org.mockito:mockito-junit-jupiter:${mockitoVersion}",
+        ]
+
+        mixed = [
+                aspectjtools   : "org.aspectj:aspectjtools:${aspectjVersion}",
+                aspectjweaver  : "org.aspectj:aspectjweaver:${aspectjVersion}",
+                aspectjrt      : "org.aspectj:aspectjrt:${aspectjVersion}",
+                jetty          : "org.eclipse.jetty:jetty-server:${jettyServerCoreVersion}",
+                artemisClient  : "org.apache.activemq:artemis-jms-client:${artemisVersion}",
+                artemisServer  : "org.apache.activemq:artemis-jms-server:${artemisVersion}",
+                guava          : "com.google.guava:guava:${guavaVersion}",
+                lang3          : "org.apache.commons:commons-lang3:${lang3Version}"
+        ]
+    }
+}
+
 plugins {
-    id 'java'
-//    id 'org.springframework.boot' version '2.3.9.RELEASE' apply false
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version "${bootVersion}"
 }
 
-ext {
-    //spring libs
-    springVersion = '5.2.22.RELEASE'
-    bootVersion = '2.3.9.RELEASE'
-    springDataVersion = '2.3.9.RELEASE'
-    springAmqpVersion = '2.2.22.RELEASE'
-    springSecurityVersion = '5.3.13.RELEASE'
-    springBatchVersion = '4.2.8.RELEASE'
-    springIntegrationVersion = '5.3.10.RELEASE'
-    projectReactorVersion = '3.3.22.RELEASE'
+// rootproject - by default, subprojects{} - inner modules,  allprojects('module1', 'dodule2'){} - (root + sub)
 
-//    springVersion = '5.3.20'
-//    bootVersion = '2.7.0'
-//    springDataVersion = '2.7.0'
-//    springAmqpVersion = '2.4.4'
-//    springSecurityVersion = '5.7.0'
-//    springBatchVersion = '4.3.5'
-//    springIntegrationVersion = '5.5.10'
+subprojects {
+    apply plugin: 'java'
 
-    //logging libs
-    slf4jVersion = '1.7.36'
-    logbackVersion = '1.2.11'
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
 
-    jettyServerCoreVersion = '11.0.10'
-    aspectjVersion = '1.9.8'
-    dbcp2Version = '2.9.0'
-    mysqlVersion = '8.0.29'
-    postgresVersion = '42.4.0'
-    javaxValidationVersion = '2.0.1.Final'
-    artemisVersion = '2.4.0'
-    lang3Version = '3.12.0'
-    lombokVersion = '1.18.22'
+    version = '1.0-SNAPSHOT'
+    group 'org.sandbox_gradle'
 
-    //persistency libraries
-    hibernateVersion = '5.6.9.Final'
-    hibernateJpaVersion = '1.0.2.Final'
-    hibernateValidatorVersion = '7.0.4.Final'
-    atomikosVersion = '5.0.8'
-
-    //testing libs
-    mockitoVersion = '4.6.0'
-    jupiterVersion = '5.6.2'
-
-    spring = [
-            core              : "org.springframework:spring-core:${springVersion}",
-            beans             : "org.springframework:spring-beans:${springVersion}",
-            context           : "org.springframework:spring-context:${springVersion}",
-            webmvc            : "org.springframework:spring-webmvc:${springVersion}",
-            aop               : "org.springframework:spring-aop:${springVersion}",
-            aspects           : "org.springframework:spring-aspects:${springVersion}",
-            tx                : "org.springframework:spring-tx:${springVersion}",
-            jdbc              : "org.springframework:spring-jdbc:${springVersion}",
-            contextSupport    : "org.springframework:spring-context-support:${springVersion}",
-            orm               : "org.springframework:spring-orm:${springVersion}",
-            dataJpa           : "org.springframework.data:spring-data-jpa:${springDataVersion}",
-            test              : "org.springframework:spring-test:${springVersion}",
-            jms               : "org.springframework:spring-jms:${springVersion}",
-            oxm               : "org.springframework:spring-oxm:${springVersion}",
-            securityWeb       : "org.springframework.security:spring-security-web:${springSecurityVersion}",
-            securityConfig    : "org.springframework.security:spring-security-config:${springSecurityVersion}",
-            securityTaglibs   : "org.springframework.security:spring-security-taglibs:${springSecurityVersion}",
-            rabbit            : "org.springframework.amqp:spring-rabbit:${springAmqpVersion}",
-            springSecurityTest: "org.springframework.security:spring-security-test:${springSecurityVersion}",
-            webSocket         : "org.springframework:spring-websocket:${springVersion}",
-            messaging         : "org.springframework:spring-messaging:${springVersion}",
-            batchCore         : "org.springframework.batch:spring-batch-core:${springBatchVersion}",
-            batchIntegration  : "org.springframework.batch:spring-batch-integration:${springBatchVersion}",
-            integrationFile   : "org.springframework.integration:spring-integration-file:${springIntegrationVersion}",
-            webflux           : "org.springframework:spring-webflux:${springVersion}",
-    ]
-
-    hibernate = [
-            validator  : "org.hibernate:hibernate-validator:${hibernateValidatorVersion}",
-            jpaModelGen: "org.hibernate:hibernate-jpamodelgen:${hibernateVersion}",
-            ehcache    : "org.hibernate:hibernate-ehcache:${hibernateVersion}",
-            em         : "org.hibernate:hibernate-entitymanager:${hibernateVersion}",
-            core       : "org.hibernate:hibernate-core:${hibernateVersion}",
-            envers     : "org.hibernate:hibernate-envers:${hibernateVersion}",
-            jpaApi     : "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:${hibernateJpaVersion}",
-            tx         : "com.atomikos:transactions-hibernate4:${atomikosVersion}"
-    ]
-
-
-    boot = [
-            springBootPlugin: "org.springframework.boot:spring-boot-gradle-plugin:${bootVersion}",
-            starterWeb      : "org.springframework.boot:spring-boot-starter-web:${bootVersion}",
-            actuator        : "org.springframework.boot:spring-boot-starter-actuator:${bootVersion}",
-            starterTest     : "org.springframework.boot:spring-boot-starter-test:${bootVersion}",
-            starterAop      : "org.springframework.boot:spring-boot-starter-aop:${bootVersion}",
-            starterJdbc     : "org.springframework.boot:spring-boot-starter-jdbc:${bootVersion}",
-            starterJpa      : "org.springframework.boot:spring-boot-starter-data-jpa:${bootVersion}",
-            starterJta      : "org.springframework.boot:spring-boot-starter-jta-atomikos:${bootVersion}",
-            starterArtemis  : "org.springframework.boot:spring-boot-starter-artemis:${bootVersion}",
-            starterRabbitmq : "org.springframework.boot:spring-boot-starter-amqp:${bootVersion}",
-            starterThyme    : "org.springframework.boot:spring-boot-starter-thymeleaf:${bootVersion}",
-            starterSecurity : "org.springframework.boot:spring-boot-starter-security:${bootVersion}",
-            starterBatch    : "org.springframework.boot:spring-boot-starter-batch:${bootVersion}",
-            starterWebflux  : "org.springframework.boot:spring-boot-starter-webflux:${bootVersion}",
-            autoconfigure   : "org.springframework.boot:spring-boot-autoconfigure:${bootVersion}"
-
-    ]
-
-    logg = [
-            slf4jApi       : "org.slf4j:slf4j-api:${slf4jVersion}",
-            slf4jSimple    : "org.slf4j:slf4j-simple:${slf4jVersion}",
-            slf4jJcl       : "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
-            logbackClassic  : "ch.qos.logback:logback-classic:${logbackVersion}",
-            logbackCore    : "ch.qos.logback:logback-core:${logbackVersion}"
-    ]
-
-    mixed = [
-            aspectjtools   : "org.aspectj:aspectjtools:${aspectjVersion}",
-            aspectjweaver  : "org.aspectj:aspectjweaver:${aspectjVersion}",
-            aspectjrt      : "org.aspectj:aspectjrt:${aspectjVersion}",
-            jetty          : "org.eclipse.jetty:jetty-server:${jettyServerCoreVersion}",
-            artemisClient  : "org.apache.activemq:artemis-jms-client:${artemisVersion}",
-            artemisServer  : "org.apache.activemq:artemis-jms-server:${artemisVersion}",
-            lang3          : "org.apache.commons:commons-lang3:${lang3Version}"
-    ]
-
-    db = [
-            mysql   : "mysql:mysql-connector-java:${mysqlVersion}",
-            postgres: "org.postgresql:postgresql:${postgresVersion}",
-            dbcp2   : "org.apache.commons:commons-dbcp2:${dbcp2Version}",
-    ]
-
-    tests = [
-            jupiterApi    : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
-            jupiterEngine : "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
-            mockitoCore   : "org.mockito:mockito-core:${mockitoVersion}",
-            mockitoJupiter: "org.mockito:mockito-junit-jupiter:${mockitoVersion}",
-    ]
-
-//    web = [
-//
-//    ]
-}
-
-allprojects {
     repositories {
         mavenCentral()
     }
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-//    sourceCompatibility = 17
-//    targetCompatibility = 17
-}
+    dependencies {
+        testImplementation tests.jupiterApi
+        testRuntimeOnly tests.jupiterEngine
+        implementation logg.slf4jApi, logg.logbackClassic, logg.logbackCore
 
-subprojects {
-    version = '1.0-SNAPSHOT'
-}
+    }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+    test {
+        useJUnitPlatform()
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    wrapper {
+        gradleVersion = "7.4"
+        distributionType = Wrapper.DistributionType.ALL
+    }
 }

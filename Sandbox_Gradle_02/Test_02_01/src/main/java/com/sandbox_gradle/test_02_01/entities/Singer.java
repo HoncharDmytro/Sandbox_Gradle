@@ -1,10 +1,7 @@
 package com.sandbox_gradle.test_02_01.entities;
 
-import org.springframework.context.annotation.Lazy;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
